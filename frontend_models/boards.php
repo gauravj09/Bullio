@@ -9,6 +9,7 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     />
+	
 	<link rel="stylesheet" href="styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -16,9 +17,19 @@
   </head>
   <body>
   
-  <?php
+  
+    <?php
 		session_start();
 		include 'navbar.php';
+		include 'addBoard.php';
+		include_once 'login.php';
+
+		$conn = new mysqli($hn, $un, $pw, $db);
+
+		// Check Connection
+		if ($conn->connect_error) {
+			die($conn->connect_error);
+		}
 		
 		if($_SESSION['newreg'] == "true" && !$_SESSION['regmessage'] == "false") {
 			echo "
@@ -30,10 +41,37 @@
 		}
 	
 	?>
-	
-<div class="jumbotron text-center">
-  <h1>This Will be the Boards Page</h1>
-</div>
+
+<br>
+<div class="container-fluid"><div class="row justify-content-center">
+
+<?php
+
+		$userID = $_SESSION['userID'];
+		$boardList = $conn->query("
+			SELECT * 
+			FROM boards 
+			WHERE userID = '$userID'");
+				
+			if($boardList->num_rows > 0) {
+				while($row = mysqli_fetch_array($boardList)) {
+						$boardName = $row["boardname"];
+						echo "
+						<a href=\"#\" class=\"btn btn-secondary btn-xl board-list\">$boardName</a>";
+				}
+			}
+?>
+
+</div></div>
+
+  
+<section class="plusbutton">
+  <div class = 'bottom-left'>
+        <a href="#" class="btn btn-secondary btn-xl" data-toggle="modal" data-target="#addBoard">+ Add Board 
+        </a> 
+  </div>
+</section>
+  
 
 <script>
 var close = document.getElementsByClassName("closebtn");

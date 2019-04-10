@@ -9,7 +9,6 @@
 }
 
 .alert.success {background-color: #4CAF50;}
-.alert.info {background-color: #2196F3;}
 .alert.warning {background-color: #ff9800;}
 
 .closebtn {
@@ -26,3 +25,32 @@
 .closebtn:hover {
   color: black;
 }
+
+.plusbutton {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+}
+
+.btn-xl {
+    padding: 10px 20px;
+    font-size: 30px;
+    border-radius: 10px;
+}
+
+.table {
+ display: table;
+ height:100%;
+ width:100%;
+}
+.table-cell {
+display: table-cell;
+vertical-align: middle;
+}
+
+.board-list {
+    width: 300px !important;
+	margin: 15px;
+	vertical-align: middle;
+}
+

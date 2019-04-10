@@ -3,7 +3,7 @@
       <div class="modal-content">
          <form class="modal-content animate" action="index.php" method="post">
             <div class="modal-header text-center">
-               <h4 class="modal-title w-100 font-weight-bold">Login</h4>
+               <h4 class="modal-title w-100 font-weight-bold">Log Into Account</h4>
                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                <span aria-hidden="true">&times;</span>
                </button>
@@ -19,7 +19,7 @@
                </div>
             </div>
             <div class="modal-footer d-flex justify-content-center">
-               <button class="btn btn-default" type="submit">Login</button>
+               <button class="btn btn-default" type="submit">Log In</button>
             </div>
          </form>
       </div>
@@ -31,7 +31,7 @@
       <div class="modal-content">
 	     <form class="modal-content animate" action="index.php" method="post">
 			 <div class="modal-header text-center">
-				<h4 class="modal-title w-100 font-weight-bold">Register</h4>
+				<h4 class="modal-title w-100 font-weight-bold">Register Account</h4>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 				</button>

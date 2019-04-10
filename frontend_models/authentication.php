@@ -33,8 +33,12 @@
 				
 			if($userCheck->num_rows > 0) {
 				// If Credentials Verified, Redirect to Boards Page
-				echo '<meta http-equiv="refresh" content="0; URL=boards.php">';
 				$_SESSION['user'] = $email;
+				while($row = mysqli_fetch_array($userCheck)) {
+						$userID = $row["userID"];
+				}
+				$_SESSION['userID'] = $userID;
+				echo '<meta http-equiv="refresh" content="0; URL=boards.php">';
 			}
 			else {
 				// If Wrong Credentials, Display Error
@@ -60,6 +64,18 @@
 							
 					if($register) {
 						$_SESSION['user'] = $email;
+						
+						$userCheck = $conn->query("
+							SELECT * 
+							FROM userdata 
+							WHERE email = '$email' 
+							AND password = '$saltPW'");
+							
+						while($row = mysqli_fetch_array($userCheck)) {
+								$userID = $row["userID"];
+						}
+						
+						$_SESSION['userID'] = "$userID";
 						$_SESSION['newreg'] = "true";
 						echo '<meta http-equiv="refresh" content="0; URL=boards.php">';
 					}
@@ -75,21 +91,21 @@
 		echo "
 		<div class=\"alert\">
 		  <span class=\"closebtn\">&times;</span>  
-		  <strong>Error:</strong> Email already registered.
+		  <strong>Error:</strong> There is already an account associated with this email.
 		</div>";
 	}
 	elseif($_SESSION['badcred'] == "true") {
 		echo "
 		<div class=\"alert\">
 		  <span class=\"closebtn\">&times;</span>  
-		  <strong>Error:</strong> Email or password incorrect.
+		  <strong>Error:</strong> Email or password incorrect. Please enter again.
 		</div>";
 	}
 	elseif($_SESSION['passver'] == "true") {
 		echo "
 		<div class=\"alert\">
 		  <span class=\"closebtn\">&times;</span>  
-		  <strong>Error:</strong> Passwords do not match.
+		  <strong>Error:</strong> Passwords do not match. Please enter again.
 		</div>";
 	}
 	
@@ -97,5 +113,6 @@
 		$var = stripslashes($var);
 		$var = strip_tags($var);
 		$var = htmlentities($var);
+		return $var;
 	}
 ?>

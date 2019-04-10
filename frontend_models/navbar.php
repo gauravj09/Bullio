@@ -28,7 +28,7 @@
 <ul class="nav navbar-nav navbar-right">
   <li class="nav-item">
 	<a class="nav-link navbar-right" href="" class="btn btn-default btn-rounded mb-4" 
-		data-toggle="modal" data-target="#modalLoginForm">Login</a>
+		data-toggle="modal" data-target="#modalLoginForm">Log In</a>
   </li>
   <li class="nav-item">
 	<a class="nav-link navbar-right" href="" class="btn btn-default btn-rounded mb-4" 
